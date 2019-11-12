@@ -13,6 +13,7 @@ class PageListView(ListView):
         """ GET a list of Pages. """
         pages = self.get_queryset().all()
         return render(request, 'list.html', {
+          
           'pages': pages
         })
 
