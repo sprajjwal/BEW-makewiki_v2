@@ -4,7 +4,7 @@
     <form action="{% url 'submit-wiki' %}" method="POST">
         {% csrf_token %}
         {{ page_form }}
-        <input type="hidden" name="author_id" value="{{ request.user.id }}">
+        
         <button type="submit">
             Submit
         </button>

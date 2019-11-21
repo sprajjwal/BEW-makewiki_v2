@@ -17,7 +17,6 @@ class PageListView(ListView):
         """ GET a list of Pages. """
         pages = self.get_queryset().all()
         return render(request, 'list.html', {
-          
           'pages': pages
         })
 
@@ -46,10 +45,11 @@ class PageNew(CreateView):
       """processes the form and adds a wiki """
       form = PageForm(request.POST)
       form.instance.author = self.request.user
-      print(form)
       if form.is_valid():
         page = form.save()
         return HttpResponseRedirect(reverse('wiki-details-page', args=[page.slug] ))
       else:
-        print("CRI__________________________-")
+        return render(request, 'add_page.html', {
+        'page_form': form,
+      })
 
